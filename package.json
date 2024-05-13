@@ -1,6 +1,6 @@
 {
   "name": "svg-pathgen",
-  "version": "0.0.2-rc1",
+  "version": "0.0.2",
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest",
