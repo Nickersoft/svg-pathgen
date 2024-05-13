@@ -1,4 +1,6 @@
-![](logo.svg)
+<div align="center">
+<img src="logo.svg" width="400px" />
+</div>
 
 ---
 
