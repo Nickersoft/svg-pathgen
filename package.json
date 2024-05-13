@@ -1,5 +1,5 @@
 {
-  "name": "svg-pathbuilder",
+  "name": "svg-pathgen",
   "version": "0.0.1",
   "type": "module",
   "devDependencies": {
