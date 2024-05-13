@@ -1,0 +1,22 @@
+{
+  "name": "svg-pathbuilder",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "bun-plugin-dts": "^0.2.3",
+    "prettier": "^3.2.5"
+  },
+  "exports": {
+    ".":{
+      "import": "./dist/path.js",
+      "types": "./dist/path.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "bun run build.mjs",
+    "prepublishOnly": "bun run build"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
