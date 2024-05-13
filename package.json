@@ -1,12 +1,13 @@
 {
   "name": "svg-pathgen",
-  "version": "0.0.1",
+  "version": "0.0.2-rc1",
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest",
     "bun-plugin-dts": "^0.2.3",
     "prettier": "^3.2.5"
   },
+  "files": ["dist"],
   "exports": {
     ".":{
       "import": "./dist/path.js",
