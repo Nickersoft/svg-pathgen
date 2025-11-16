@@ -1,0 +1,39 @@
+[tools]
+bun = "latest"
+node = "lts"
+
+[hooks]
+postinstall = "bun install"
+
+[vars]
+entrypoint = "./src/index.ts"
+build_args = '--outdir=dist --sourcemap --splitting --target=browser --clean'
+
+[tasks."build:esm"]
+hide = true
+run = "bun build {{vars.entrypoint}} {{vars.build_args}} --format=esm"
+
+[tasks."build:cjs"]
+hide = true
+run = "bun build {{vars.entrypoint}} {{vars.build_args}} --format=cjs --entry-naming=\"[dir]/[name].cjs\""
+
+[tasks."build:dts"]
+hide = true
+run = "bun x tsgo --project tsconfig.json"
+
+[tasks.clean]
+run = "rm -rf ./dist"
+
+[tasks.fix]
+run = "bun x oxlint check --fix"
+
+[tasks.check]
+run = "bun x oxlint check"
+
+[tasks.build]
+depends = ["clean"]
+run = [{ tasks = ["build:esm", "build:cjs", "build:dts"] }]
+
+[tasks.test]
+depends = ["build", "test:setup"]
+run = "bun test"

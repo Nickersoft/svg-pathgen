@@ -2,20 +2,20 @@ import type { ArcOptions } from "./arc-options";
 import type { CurveOptions } from "./curve-options";
 
 export class Path {
-  private currentPath: (string | number)[];
-  private lastCommand: string;
-  private isRelative: boolean;
+  #currentPath: (string | number)[];
+  #lastCommand: string;
+  #isRelative: boolean;
 
   constructor(path?: string) {
-    this.currentPath = path ? [path] : [];
-    this.lastCommand = "";
-    this.isRelative = false;
+    this.#currentPath = path ? [path] : [];
+    this.#lastCommand = "";
+    this.#isRelative = false;
 
     if (path) {
       const lastCommandMatch = path.match(/[a-zA-Z]/g);
 
       if (lastCommandMatch) {
-        this.lastCommand = lastCommandMatch[lastCommandMatch.length - 1];
+        this.#lastCommand = lastCommandMatch[lastCommandMatch.length - 1];
       }
     }
   }
@@ -48,7 +48,7 @@ export class Path {
    * @returns The final path string
    */
   end() {
-    return this.currentPath.join(" ").trim();
+    return this.#currentPath.join(" ").trim();
   }
 
   /**
@@ -149,7 +149,7 @@ export class Path {
    * Call before any method to have the following method accept relative coordinates instead of absolute coordinates.
    */
   relative() {
-    this.isRelative = true;
+    this.#isRelative = true;
     return this;
   }
 
@@ -162,19 +162,19 @@ export class Path {
   private appendData(command: string, ...args: number[]) {
     let cmd = command;
 
-    if (this.isRelative) {
+    if (this.#isRelative) {
       cmd = command.toLowerCase();
-      this.isRelative = false;
+      this.#isRelative = false;
     }
 
-    let appendCommand = cmd !== this.lastCommand;
+    let appendCommand = cmd !== this.#lastCommand;
 
-    this.lastCommand = cmd;
+    this.#lastCommand = cmd;
 
     if (appendCommand) {
-      this.currentPath.push(cmd);
+      this.#currentPath.push(cmd);
     }
 
-    this.currentPath = [...this.currentPath, ...args];
+    this.#currentPath = [...this.#currentPath, ...args];
   }
 }
