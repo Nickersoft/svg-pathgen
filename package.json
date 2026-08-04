@@ -1,10 +1,8 @@
 {
   "name": "svg-pathgen",
-  "version": "0.0.5",
-  "type": "module",
+  "version": "0.0.6",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "types": "./dist/types/index.d.ts",
   "devDependencies": {
     "@types/bun": "^1.3.14",
     "@typescript/native-preview": "^7.0.0-dev.20260707.2",
@@ -14,9 +12,6 @@
     "prettier": "^3.9.6",
     "typescript": "^7.0.2"
   },
-  "files": [
-    "dist"
-  ],
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
@@ -24,7 +19,14 @@
       "require": "./dist/index.cjs"
     }
   },
+  "files": [
+    "dist",
+    "logo.svg",
+    "README.md"
+  ],
   "scripts": {
     "prepublishOnly": "mise run build"
-  }
+  },
+  "type": "module",
+  "types": "./dist/types/index.d.ts"
 }

@@ -30,6 +30,10 @@ run = "bun x oxlint check --fix"
 [tasks.check]
 run = "bun x oxlint check"
 
+[tasks.publish]
+depends = ["build"]
+run = ["bun publish --access public"]
+
 [tasks.build]
 depends = ["clean"]
 run = [{ tasks = ["build:esm", "build:cjs", "build:dts"] }]
