@@ -9,8 +9,8 @@
 		"noImplicitAny": false,
 		"esModuleInterop": true,
 		"declarationMap": true,
-		"moduleResolution": "node",
 		"outDir": "dist/types",
+		"rootDir": ".",
 		"emitDeclarationOnly": true
 	},
 	"include": ["src/**/*", "types/**/*"]

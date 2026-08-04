@@ -35,5 +35,5 @@ depends = ["clean"]
 run = [{ tasks = ["build:esm", "build:cjs", "build:dts"] }]
 
 [tasks.test]
-depends = ["build", "test:setup"]
+depends = ["build"]
 run = "bun test"
